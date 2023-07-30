@@ -9,7 +9,7 @@ const UrlShrinker = ({ shortUrls }) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3000/shortUrls', { fullUrl });
+            const response = await axios.post('https://tinyurl-4jgn.onrender.com/shortUrls', { fullUrl });
             // Handle the response or update the state as needed
             console.log(response.data);
             
@@ -49,7 +49,7 @@ const UrlShrinker = ({ shortUrls }) => {
                     {shortUrls.map(shortUrl => (
                         <tr key={shortUrl._id}>
                             <td><a href={shortUrl.full}>{shortUrl.full}</a></td>
-                            <td><a href={`http://localhost:3000/${shortUrl.short}`}>{shortUrl.short}</a></td>
+                            <td><a href={`https://tinyurl-4jgn.onrender.com/${shortUrl.short}`}>{shortUrl.short}</a></td>
                             <td>{shortUrl.clicks}</td>
                         </tr>
                     ))}

@@ -3,30 +3,26 @@ import UrlShrinker from './UrlShrinker';
 import axios from 'axios';
 
 const App = () => {
-  const [shortUrls, setShortUrls] = useState([]);
+    const [shortUrls, setShortUrls] = useState([]);
 
-  useEffect(() => {
     const getShortUrls = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/');
-        setShortUrls(response.data);
-      } catch (error) {
-        console.error(error);
-      }
+        try {
+            const response = await axios.get('https://tinyurl-4jgn.onrender.com/');
+            setShortUrls(response.data);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     getShortUrls();
-  }, [shortUrls]);
+    useEffect(() => {
+    }, [shortUrls]);
 
-  return (
-    <div>
-      {shortUrls.length >0 ? (
-        <UrlShrinker shortUrls={shortUrls} />
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
+    return (
+        <div>
+            <UrlShrinker shortUrls={shortUrls} />
+        </div>
+    );
 };
 
 export default App;
